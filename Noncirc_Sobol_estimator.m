@@ -10,20 +10,24 @@ m = OutputNumber;
 
 % Run the model to generate output for A,B and AB parameters
 
-fA = zeros(N,m);
-fB = zeros(N,m);
-fAB = zeros(N*d,m);
+fA = cell(N,m);
+fB = cell(N,m);
+fAB = cell(N*d,m);
 
 parfor i=1:N
-   fA(i,:) = modelfun(par_A(i,:)); 
-   fB(i,:) = modelfun(par_B(i,:)); 
+   [fA{i,:}] = modelfun(par_A(i,:)); 
+   [fB{i,:}] = modelfun(par_B(i,:)); 
 end    
 
 parfor j=1:d*N
-    fAB(j,:) = modelfun(par_AB(j,:)); 
+    [fAB{j,:}] = modelfun(par_AB(j,:)); 
 end
 
 %% calculate total variance using fA
+fA = cell2mat(fA);
+fB = cell2mat(fB);
+fAB = cell2mat(fAB);
+
 Var = var(fA);
 
 
