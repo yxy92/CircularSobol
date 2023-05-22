@@ -33,7 +33,7 @@ output.
 </span>
 
 <pre><code>
-% MATLAB code (try run Toy_Model_Run.m in MATLAB)
+% MATLAB code (try run Toy_Model_Run.m in MATLAB yourself)
 % Example of calculating Sobol indices for toy models 
 
 % 1st step: build a model using bbModel class
@@ -48,7 +48,8 @@ output.
 %          -> scalar, number of inputs
 %          -> scalar, number of outputs
 %          -> optional name-value pair, 'OutputType', boolean array
-%             1:Circular, 0: non-Circular, default:[0...0]
+%             1:Circular, 0: non-Circular, default:[0...0], of length equal to # of outputs
+%             e.g. ToyModel_1 has 2 outputs, y1 and y2, then 'OutputType' should be set as [1 1]
                                        
 toy_model_1 = bbModel(@ToyModel_1,3,2,'OutputType',[1 1]);
 
