@@ -11,7 +11,7 @@ and circular variance are differently defined from their counterpart in
 non-circular statistics.
 </span>
 
-<img src="Circular_noncircular_Statistics.png"  width="400" height="400">
+<img src="Circular_noncircular_Statistics.png"  width="800" height="200">
 
 
 
