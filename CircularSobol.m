@@ -59,6 +59,7 @@ function [S1, ST] = CircularSobol(model, params, varargin)
     % display basic information of the simulation 
     disp('------------------------')
     disp(['You have chosen method ', Method]);
+    disp(['You have chosen formula ', num2str(Formula)]);
     disp(['The sampleSize is ', num2str(SampleSize)]);
     disp(['The GroupNumber in nested sampling is ', num2str(GroupNumber)]);
     disp(['The GroupSize in nested sampling is ',  num2str(GroupSize)]);
