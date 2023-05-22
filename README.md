@@ -63,9 +63,10 @@ params_1 = repmat({uni_pd},3,1); % Toy Model 1-3
 % call CircularSobol (check argument syntax in CircularSobol.m)
 tic
 disp('Start running of toy models');
-use nonCircular Sobol indices method
-disp('')
-[S1, ST] = CircularSobol(toy_model_3, params_1,'method','Circular','SampleSize',10^5,'formula',2,...
+% use Circular Sobol indices method
+% try use different formula, SampleSize, GroupNumber, GroupSize
+
+[S1, ST] = CircularSobol(toy_model_1, params_1,'method','Circular','SampleSize',10^5,'formula',1,...
                                                             'GroupNumber',10^3,'GroupSize',10^3);
 toc
 
