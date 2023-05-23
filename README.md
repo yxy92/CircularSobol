@@ -1,3 +1,38 @@
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 12px;
+  }
+td {  /* Table  */
+  font-size: 8px;
+}
+h1.title {
+  font-size: 38px;
+  color: DarkRed;
+}
+h1 { /* Header 1 */
+  font-size: 28px;
+  color: DarkBlue;
+}
+h2 { /* Header 2 */
+    font-size: 22px;
+  color: DarkBlue;
+}
+h3 { /* Header 3 */
+  font-size: 18px;
+  font-family: "Times New Roman", Times, serif;
+  color: DarkBlue;
+}
+code.r{ /* Code block */
+    font-size: 12px;
+}
+pre { /* Code block - determines code spacing between lines */
+    font-size: 14px;
+}
+</style>
+
+
+
 # CircularSobol
 <span style="color:black;font-weight:200;font-size:20px">
 CircularSobol is a computational tool that calculates the circular Sobol indices 
@@ -32,6 +67,7 @@ accurately quantify the contribution of individual parameters to the variance in
 output.
 </span>
 
+### Oscillation toy models
 <pre><code>
 % MATLAB code (try run Toy_Model_Run.m in MATLAB yourself)
 % Example of calculating Sobol indices for toy models 
@@ -72,3 +108,8 @@ disp('Start running of toy models');
 toc
 
 </code></pre>
+
+### Rhythmic mRNA expression model
+
+
+### Rhythmic mRNA poly(A) tail length model
