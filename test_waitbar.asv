@@ -1,0 +1,22 @@
+% test_waitbar.m
+
+clear;
+
+barque = parallel.pool.DataQueue;
+afterEach(barque, @nUpdateWaitbar);
+
+
+
+p = 1;
+N = 10^3;
+parfor i = 1:N
+    send(barque,i);
+    
+    waitbar()
+end
+
+
+    function nUpdateWaitbar(~)
+        waitbar(p/N, h);
+        p = p + 1;
+    end
