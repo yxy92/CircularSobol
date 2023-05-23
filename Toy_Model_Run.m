@@ -19,7 +19,7 @@ tic
 disp('Start running toy models');
 % use nonCircular Sobol indices method
 disp('')
-[S1, ST] = CircularSobol(toy_model_3, params_1,'method','Circular','SampleSize',10^5,'formula',1,...
+[S1, ST] = CircularSobol(toy_model_3, params_1,'method','nonCircular','SampleSize',10^5,'formula',1,...
                                                             'GroupNumber',10^3,'GroupSize',10^3);
 toc
 

@@ -24,6 +24,6 @@ tic
 disp('Start running Sarah_Rhythmic_mRNA model');
 % use nonCircular Sobol indices method
 
-[S1, ST] = CircularSobol(Rhythmic_mRNA_model, params,'method','nonCircular','SampleSize',10^5,'formula',1,...
+[S1, ST] = CircularSobol(Rhythmic_mRNA_model, params,'method','nonCircular','SampleSize',10^3,'formula',2,...
                                                             'GroupNumber',10^3,'GroupSize',10^3);
 toc
