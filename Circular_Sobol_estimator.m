@@ -32,8 +32,8 @@ for index = 1:d
     [SinglePar,TotalPar] = generate_Nested_Parameter(params,p,q,d,index);
       
     %% run the model
-    Output_Single = cell(p,q,m);
-    Output_Total = cell(p,q,m);
+    Output_Single = zeros(p,q,m);
+    Output_Total = zeros(p,q,m);
     
  
     parfor group_index = 1:p
@@ -42,15 +42,13 @@ for index = 1:d
             tmp_par_single = reshape(SinglePar(group_index,row_index,:),[d,1]);
             tmp_par_total = reshape(TotalPar(group_index,row_index,:),[d,1]);
             
-            [Output_Single{group_index,row_index,:}] = modelfun(tmp_par_single);
-            [Output_Total{group_index,row_index,:}] = modelfun(tmp_par_total);            
+            Output_Single(group_index,row_index,:) = modelfun(tmp_par_single);
+            Output_Total(group_index,row_index,:) = modelfun(tmp_par_total);            
         end
     end
     
 
     %% Sobol index calculation
-    Output_Single = cell2mat(Output_Single);
-    Output_Total = cell2mat(Output_Total);
     
     V1 = zeros(m,1);
     Vt = zeros(m,1);

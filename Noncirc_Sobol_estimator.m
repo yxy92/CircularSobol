@@ -10,45 +10,45 @@ m = OutputNumber;
 
 % Run the model to generate output for A,B and AB parameters
 
-fA = cell(N,m);
-fB = cell(N,m);
-fAB = cell(N*d,m);
+fA = zeros(N,m);
+fB = zeros(N,m);
+fAB = zeros(N*d,m);
 
 
 % add parfor wait bar for running A,B samples
+w = waitbar(0,'Start paralle running of A,B samples...');
 D = parallel.pool.DataQueue;
-afterEach(D, @nUpdateWaitbar);
-h = waitbar(0,'Start paralle running of A,B samples...');
-parindex = 1;
+afterEach(D, @parforWaitbar);
+
+iteration_A = N;
+parforWaitbar(w,iteration_A);
 
 parfor i=1:N
-   [fA{i,:}] = modelfun(par_A(i,:)); 
-   [fB{i,:}] = modelfun(par_B(i,:)); 
+   fA(i,:) = modelfun(par_A(i,:)); 
+   fB(i,:) = modelfun(par_B(i,:)); 
    
-   send(D,i);
+   send(D,[]);
 end    
 
-close(h);
-
+delete(w);
+disp('Finished running the A,B samples')
 % add parfor wait bar for running AB sample
+w = waitbar(0,'Start paralle running of AB sample...');
 D = parallel.pool.DataQueue;
-afterEach(D, @nUpdateWaitbarAB);
-h = waitbar(0,'Start paralle running of AB sample...');
-parindex = 1;
+afterEach(D, @parforWaitbar);
+
+iteration_AB = d*N;
+parforWaitbar(w,iteration_AB);
 
 parfor j=1:d*N
-    [fAB{j,:}] = modelfun(par_AB(j,:)); 
+    fAB(j,:) = modelfun(par_AB(j,:)); 
     
-    send(D,j);
+    send(D,[]);
 end
 
-close(h)
-
+delete(w);
+disp('Finished running the AB sample')
 %% calculate total variance using fA
-fA = cell2mat(fA);
-fB = cell2mat(fB);
-fAB = cell2mat(fAB);
-
 Var = var(fA);
 
 
@@ -81,15 +81,5 @@ end
 S1 = V1./Var';
 ST = Vt./Var';
 
-%% parfor wait bar update functions 
-function nUpdateWaitbar(~)
-    waitbar(parindex/N, h);
-    parindex = parindex + 1;
-end
-
-function nUpdateWaitbarAB(~)
-    waitbar(parindex/N*d, h);
-    parindex = parindex + 1;
-end
 
 end

@@ -10,13 +10,25 @@ function total_Var = Var_Calculator(modelfun,N,d,m,pd_list,OutputType,formula)
     % formula -> 1 or 2 for different circular variance definition 
     
     Var_Parameter = generated_Var_Parameter(N,d,pd_list);
-    Var_Output = cell(N,m);
+    Var_Output = zeros(N,m);
   
-    for j=1:N
-        [Var_Output{j,:}] = modelfun(Var_Parameter(j,:));
+    % add parfor wait bar for running the Var sample
+    w = waitbar(0,'Start paralle running of the Var sample...');
+    D = parallel.pool.DataQueue;
+    afterEach(D, @parforWaitbar);
+
+    iteration = N;
+    parforWaitbar(w,iteration);
+    
+    parfor j=1:N
+        Var_Output(j,:) = modelfun(Var_Parameter(j,:));
+        send(D,[]);
     end
     
-    Var_Output = cell2mat(Var_Output);
+    close(w)
+    disp('Finished running the parameter sample for Variance calculation')
+    
+    % calculate variance 
     total_Var = var(Var_Output);
     
     for j=1:m
@@ -29,7 +41,5 @@ function total_Var = Var_Calculator(modelfun,N,d,m,pd_list,OutputType,formula)
             end
         end    
     end
-
     
-
 end
