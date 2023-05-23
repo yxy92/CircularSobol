@@ -82,7 +82,7 @@ Besides rhythmic transcription, mounting evidence has suggested the role of rhyt
 in shaping and fine-tuning the rhythmicity of mature mRNA abundance. Sarah Luck et al. 2012
 developed a simple mathematical model of rhythmic mRNA expression to show that rhythmic degradation can explain 
 the observed discrepancy between rhythmic mRNAs and proteins. The model and analytic approximation of the peak
-phase of rhythmic mRNA $\Phi_{x}$ are shown here.
+phase of rhythmic mRNA $\phi_{x}$ are shown here.
 
 <img src="Sarah_Rhythmic_mRNA.png"  width="500" height="200">
 
