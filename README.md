@@ -85,6 +85,10 @@ the observed discrepancy between rhythmic mRNAs and proteins. The model and anal
 phase of rhythmic mRNA $\phi_{x}$ are shown here.
 
 <img src="Sarah_Rhythmic_mRNA.png"  width="500" height="200">
+<pre><code>
+% Original paper: Sarah Luck et al. 2014 Cell Reports
+% check Rhythmic_mRNA_Model_Run.m for detail
+</code></pre>
 
 ### Rhythmic mRNA poly(A) tail length model
 Most eukaryotic mRNAs carry a tract of adenosines, known as the poly(A)  tail, whose function has been assoicated with
@@ -93,3 +97,18 @@ rhythmic poly(A) tail length (approximated by the ratio of long-tailed/short-tai
 We developed a simple model accounting for the 4 coupled rhythmic regulation processes of mRNA poly(A) tail, whose mathematical descirption are shown here.
 
 <img src="XY_Rhythmic_polyA_model.png"  width="500" height="300">
+
+<pre><code>
+% Original paper: Xiangyu Yao et al. 2020 PLoS Comput Biol
+% check Rhythmic_polyA_Model_Run.m for detail
+</code></pre>
+
+## Conclusion
+Global sensitivity analysis (GSA) tools have been widely used in mathematical modeling of systems in engineering, 
+finance and biology to identify key parameters,
+reduce model complexity, and inform robust parameter choice. Self-sustained oscillators play important
+roles in humans, such as oscillatory blood pressure, brain activity and circadian rhythms.
+Sobol indices, as one of the most commonly used GSA method, has not been examined for its application
+to oscillator models involving periodic quantities. 'CircularSobol' combines the parameter sampling scheme from 
+the original Sobol's method and circular statistics to more accurately quantify the contribution of parameters
+to periodic model outputs.
