@@ -27,9 +27,10 @@ KpolyA_pd = 10.^random(KpolyA_pd_log,[size,1]);
 params = {Amp_pd Phase_pd KdeA_pd Amp_pd Phase_pd KpolyA_pd Amp_pd Phase_pd Kdgrd_pd Amp_pd Phase_pd};
 
 % call CircularSobol
-tic
+tStart = tic;
 disp('Start running XY_Rhythmic_polyA model');
 
-[S1, ST] = CircularSobol(Rhythmic_polyA_model, params,'method','nonCircular','SampleSize',10^5,'formula',1,...
-                                                            'GroupNumber',10^3,'GroupSize',10^3);
-toc
+[S1, ST] = CircularSobol(Rhythmic_polyA_model, params,'method','Circular','SampleSize',10^5,'formula',1,...
+                                                            'GroupNumber',10^2,'GroupSize',10^3,'plot',1);
+tEnd = toc(tStart);
+fprintf('The running took %s \n', duration([0, 0, tEnd]));
