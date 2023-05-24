@@ -22,7 +22,6 @@ params = {amp_pd phase_pd Kd_pd amp_pd phase_pd};
 % call CircularSobol
 tic
 disp('Start running Sarah_Rhythmic_mRNA model');
-% use nonCircular Sobol indices method
 
 [S1, ST] = CircularSobol(Rhythmic_mRNA_model, params,'method','nonCircular','SampleSize',10^3,'formula',2,...
                                                             'GroupNumber',10^3,'GroupSize',10^3);
