@@ -4,7 +4,7 @@
 clear;
 
 % construct the rhythmic polyA model
-Rhythmic_polyA_model = bbModel(@XY_Rhythmic_polyA_Model,11,15,'OutputType',[0 0 1 0 0 1 0 0 1 0 0 1 0 0 1]);
+Rhythmic_polyA_model = bbModel(@XY_Rhythmic_polyA_Model,11,15,'OutputType',[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]);
 
 % 1. Create Parameter Distribution
 

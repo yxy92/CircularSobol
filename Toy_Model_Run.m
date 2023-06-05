@@ -15,14 +15,18 @@ params_1 = repmat({uni_pd},3,1); % Toy Model 1-3
 params_2 = repmat({uni_pd},10,1);  % Toy Model 4
 
 % call CircularSobol
-tic
+tStart = tic;
 disp('Start running toy models');
 % use nonCircular Sobol indices method
 disp('')
+<<<<<<< Updated upstream
 [S1, ST] = CircularSobol(toy_model_3, params_1,'method','nonCircular','SampleSize',10^5,'formula',1,...
+=======
+[S1, ST] = CircularSobol(toy_model_4, params_2,'method','Circular','SampleSize',10^5,'formula',1,...
+>>>>>>> Stashed changes
                                                             'GroupNumber',10^3,'GroupSize',10^3);
-toc
-
+tEnd = toc(tStart);
+fprintf('The running took %s \n', duration([0, 0, tEnd]));
 
 % tic
 % disp('Start running of toy model 4');

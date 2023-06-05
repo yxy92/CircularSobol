@@ -69,6 +69,7 @@ function [S1, ST] = CircularSobol(model, params, varargin)
     disp(['The function of the model is ', func2str(modelfun)]);
     disp(['There are ', num2str(InputNumber), ' parameters']);
     disp(['There are ', num2str(OutputNumber), ' model outputs']);
+    disp(['The output types are ', num2str(OutputType)]);
     disp('------------------------')
     
     
