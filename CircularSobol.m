@@ -21,6 +21,7 @@ function [S1, ST] = CircularSobol(model, params, varargin)
  % parse input arguments
      
      defaultPlot = 1;
+     defaultProgress = 1;
      defaultMethod = 'nonCircular';
      defaultFormula = 1;
      defaultSampleSize = 10^5;
@@ -36,6 +37,7 @@ function [S1, ST] = CircularSobol(model, params, varargin)
      addOptional(p,'method',defaultMethod);
      addOptional(p,'formula',defaultFormula);
      addOptional(p,'plot',defaultPlot);
+     addOptional(p,'progress',defaultProgress)
      
      addParameter(p,'SampleSize',defaultSampleSize);
      addParameter(p,'GroupNumber',defaultGroupNumber);
@@ -55,23 +57,25 @@ function [S1, ST] = CircularSobol(model, params, varargin)
     GroupNumber =   p.Results.GroupNumber;
     GroupSize =  p.Results.GroupSize;
     plot = p.Results.plot;
-  
-    % display basic information of the simulation 
-    disp('------------------------')
-    disp(['You have chosen method ', Method]);
-    disp(['You have chosen formula ', num2str(Formula)]);
-    disp(['The sampleSize is ', num2str(SampleSize)]);
-    disp(['The GroupNumber in nested sampling is ', num2str(GroupNumber)]);
-    disp(['The GroupSize in nested sampling is ',  num2str(GroupSize)]);
-   
-    % display basic information of the model
-    disp('------------------------')
-    disp(['The function of the model is ', func2str(modelfun)]);
-    disp(['There are ', num2str(InputNumber), ' parameters']);
-    disp(['There are ', num2str(OutputNumber), ' model outputs']);
-    disp(['The output types are ', num2str(OutputType)]);
-    disp('------------------------')
+    progress = p.Results.progress;
     
+    % display basic information of the simulation 
+    if progress == 1
+        disp('------------------------')
+        disp(['You have chosen method ', Method]);
+        disp(['You have chosen formula ', num2str(Formula)]);
+        disp(['The sampleSize is ', num2str(SampleSize)]);
+        disp(['The GroupNumber in nested sampling is ', num2str(GroupNumber)]);
+        disp(['The GroupSize in nested sampling is ',  num2str(GroupSize)]);
+
+        % display basic information of the model
+        disp('------------------------')
+        disp(['The function of the model is ', func2str(modelfun)]);
+        disp(['There are ', num2str(InputNumber), ' parameters']);
+        disp(['There are ', num2str(OutputNumber), ' model outputs']);
+        disp(['The output types are ', num2str(OutputType)]);
+        disp('------------------------')
+    end
     
  % calulate Sobol indices 
      switch Method

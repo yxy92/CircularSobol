@@ -5,6 +5,7 @@ function [SingleCube,TotalCube] = generate_Nested_cube(p,q,d,index)
     % index -> index of parameter
     
     % create latin hyper cube of dimension [p,q,d]
+    rng('shuffle');
     SingleCube = reshape(lhsdesign(p*q,d),[p,q,d]);
     TotalCube = reshape(lhsdesign(p*q,d),[p,q,d]);
     

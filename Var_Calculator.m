@@ -8,7 +8,7 @@ function total_Var = Var_Calculator(modelfun,N,d,m,pd_list,OutputType,formula)
     % OutputType -> boolean array of type of output, circular 1,
     % non-circular 0
     % formula -> 1 or 2 for different circular variance definition 
-    
+    rng('shuffle');
     Var_Parameter = generated_Var_Parameter(N,d,pd_list);
     Var_Output = zeros(N,m);
   
@@ -26,7 +26,7 @@ function total_Var = Var_Calculator(modelfun,N,d,m,pd_list,OutputType,formula)
     end
     
     close(w)
-    disp('Finished running the parameter sample for Variance calculation')
+    %disp('Finished running the parameter sample for Variance calculation')
     
     % calculate variance 
     total_Var = var(Var_Output);

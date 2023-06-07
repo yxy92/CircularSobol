@@ -2,7 +2,7 @@
 % N is the sample size, d is the number of parameters
 
 function [par_A,par_B,par_AB] = generate_AB_Parameter(N,d,params)
-
+ rng('shuffle');
 % generate 2 latin hyper unit cube samples
  A = lhsdesign(N,d);
  B = lhsdesign(N,d);
