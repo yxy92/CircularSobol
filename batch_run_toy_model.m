@@ -1,28 +1,27 @@
-% batch_run_mRNA_model.m
-% batch run for sobol indices 
+% batch_run_toy_model.m
 
 clear;
+
 tStart = tic;
 % hyper parameter for batch run
 batch_size = 10;
 
-% construct the Sarah_Rhythmic_mRNA model
-Rhythmic_mRNA_model = bbModel(@Sarah_Rhythmic_mRNA,5,3,'OutputType',[0 0 0]);
 
-% create parameter distribution
-par_size = 10000;
+% construct the toy models
+toy_model_1 = bbModel(@ToyModel_1,3,2,'OutputType',[1 1]);
+toy_model_2 = bbModel(@ToyModel_2,3,2,'OutputType',[1 1]);
+toy_model_3 = bbModel(@ToyModel_3,3,2,'OutputType',[1 1]);
+toy_model_4 = bbModel(@ToyModel_4,10,2,'OutputType',[1 1]);
 
-amp_pd = makedist('Uniform','lower',0,'upper',1);
-phase_pd = makedist('Uniform','lower',0,'upper',24);
+% construct parameter distribution
+uni_pd = makedist('Uniform','lower',0,'upper',2*pi);
 
-Kd_pd_log= makedist('Uniform','lower',-1.58,'upper',1.415);
-Kd_pd = 10.^random(Kd_pd_log,[par_size,1]);
-
-params = {amp_pd phase_pd Kd_pd amp_pd phase_pd};
+params_1 = repmat({uni_pd},3,1); % Toy Model 1-3
+params_2 = repmat({uni_pd},10,1);  % Toy Model 4
 
 % batch run
-input_number = Rhythmic_mRNA_model.ParNumber;
-output_number = Rhythmic_mRNA_model.OutputNumber;
+input_number = toy_model_1.ParNumber;
+output_number = toy_model_1.OutputNumber;
 
 S1_batch = zeros(batch_size,output_number,input_number);
 ST_batch = zeros(batch_size,output_number,input_number);
@@ -34,8 +33,8 @@ for i=1:batch_size
     waitbar(i/batch_size, f, sprintf('Progress: %d %%', floor(i/batch_size*100)));
    
     
-    [S1, ST] = CircularSobol(Rhythmic_mRNA_model, params,'method','Circular','SampleSize',10^4,'formula',1,...
-                                                            'GroupNumber',1000,'GroupSize',4,'plot',0,'progress',0);
+    [S1, ST] = CircularSobol(toy_model_1, params_1,'method','nonCircular','SampleSize',10^5,'formula',1,...
+                                                            'GroupNumber',4,'GroupSize',4,'plot',0,'progress',0);
     S1_batch(i,:,:) = S1;
     ST_batch(i,:,:) = ST;
     
