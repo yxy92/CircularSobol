@@ -23,7 +23,7 @@ params = {amp_pd phase_pd Kd_pd amp_pd phase_pd};
 tStart = tic;
 disp('Start running Sarah_Rhythmic_mRNA model');
 
-[S1, ST] = CircularSobol(Rhythmic_mRNA_model, params,'method','Circular','SampleSize',10^5,'formula',1,...
-                                                            'GroupNumber',4,'GroupSize',20);
+[S1, ST] = CircularSobol(Rhythmic_mRNA_model, params,'method','Circular','SampleSize',10^4,'formula',1,...
+                                                            'GroupNumber',10^4,'GroupSize',2);
 tEnd = toc(tStart);
 fprintf('The running took %s \n', duration([0, 0, tEnd]));
