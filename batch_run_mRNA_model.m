@@ -7,7 +7,7 @@ tStart = tic;
 batch_size = 10;
 
 % construct the Sarah_Rhythmic_mRNA model
-Rhythmic_mRNA_model = bbModel(@Sarah_Rhythmic_mRNA,5,3,'OutputType',[0 0 0]);
+Rhythmic_mRNA_model = bbModel(@Sarah_Rhythmic_mRNA,5,3,'OutputType',[0 0 1]);
 
 % create parameter distribution
 par_size = 10000;
@@ -35,7 +35,7 @@ for i=1:batch_size
    
     
     [S1, ST] = CircularSobol(Rhythmic_mRNA_model, params,'method','Circular','SampleSize',10^4,'formula',1,...
-                                                            'GroupNumber',1000,'GroupSize',4,'plot',0,'progress',0);
+                                                            'GroupNumber',10000,'GroupSize',2,'plot',0,'progress',0);
     S1_batch(i,:,:) = S1;
     ST_batch(i,:,:) = ST;
     
