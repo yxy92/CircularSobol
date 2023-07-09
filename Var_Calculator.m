@@ -9,7 +9,7 @@ function total_Var = Var_Calculator(modelfun,N,d,m,pd_list,OutputType,formula)
     % non-circular 0
     % formula -> 1 or 2 for different circular variance definition 
     rng('shuffle');
-    Var_Parameter = generated_Var_Parameter(N,d,pd_list);
+    Var_Parameter = generate_Var_Parameter(N,d,pd_list);
     Var_Output = zeros(N,m);
   
     % add parfor wait bar for running the Var sample
