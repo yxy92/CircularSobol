@@ -35,7 +35,8 @@ for i=1:batch_size
    
     
     [S1, ST] = CircularSobol(Rhythmic_mRNA_model, params,'method','Circular','SampleSize',10^4,'formula',1,...
-                                                            'GroupNumber',10000,'GroupSize',2,'plot',0,'progress',0);
+                                                            'GroupNumber',100,'GroupSize',100,'plot',0,'progress',0);
+
     S1_batch(i,:,:) = S1;
     ST_batch(i,:,:) = ST;
     

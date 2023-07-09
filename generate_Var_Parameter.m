@@ -1,4 +1,4 @@
-function Var_Parameter = generated_Var_Parameter(N,d,pd_list) 
+function Var_Parameter = generate_Var_Parameter(N,d,pd_list) 
     % N -> sample size
     % d -> # of parameters
     % pd_list -> parameter distribution or allowable parameter values

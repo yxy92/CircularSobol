@@ -58,12 +58,12 @@ for index = 1:d
 
     
     for Output_index = 1:m
-        Output_type = OutputType(Output_index);
+        Current_Output_type = OutputType(Output_index);
         
         Current_Output_Single = reshape(Output_Single(:,:,Output_index),[p,q]);
         Current_Output_Total = reshape(Output_Total(:,:,Output_index),[p,q]);
         
-        switch Output_type
+        switch Current_Output_type
             case 0 % non-circular 
                 
                 mean_Single = zeros(p,1);
