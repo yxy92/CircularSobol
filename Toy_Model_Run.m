@@ -20,8 +20,8 @@ disp('Start running toy models');
 % use nonCircular Sobol indices method
 disp('')
 
-[S1, ST] = CircularSobol(toy_model_4, params_2,'method','Circular','SampleSize',10^5,'formula',1,...
-                                                            'GroupNumber',10^2,'GroupSize',10^3);
+[S1, ST] = CircularSobol(toy_model_4, params_2,'method','Circular','SampleSize',10^4,'formula',1,...
+                                                            'GroupNumber',10^2,'GroupSize',10^2);
 tEnd = toc(tStart);
 fprintf('The running took %s \n', duration([0, 0, tEnd]));
 
