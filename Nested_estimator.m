@@ -1,6 +1,6 @@
-% Circular_Sobol_estimator.m
+% Nested_estimator.m
 
-function [S1,ST] = Circular_Sobol_estimator(modelfun,params,InputNumber,OutputNumber,OutputType,Formula,SampleSize,GroupNumber,GroupSize)
+function [S1,ST] = Nested_estimator(modelfun,params,InputNumber,OutputNumber,OutputType,Formula,SampleSize,GroupNumber,GroupSize)
 
 
 % generate Nested Latin Unit Cube for each input parameter
@@ -21,7 +21,7 @@ total_Var = Var_Calculator(modelfun,N,d,m,params,OutputType,Formula);
 
 %% calculate Si and STi for individual parameters for each output
 
-f = waitbar(0,'Start CircularSobol estimation ...');
+f = waitbar(0,'Start Nested Sobol estimator...');
 
 for index = 1:d
     
@@ -64,18 +64,37 @@ for index = 1:d
         Current_Output_Total = reshape(Output_Total(:,:,Output_index),[p,q]);
         
         switch Current_Output_type
-            case 0 % non-circular 
+            case 0 % non-circular output quantity 
                 
-                mean_Single = zeros(p,1);
-                mean_Total = zeros(p,1);
-                for Group_index = 1:p
-                    mean_Single(Group_index) = mean(Current_Output_Single(Group_index,:)); % regular mean
-                    mean_Total(Group_index) = mean(Current_Output_Total(Group_index,:)); % regular mean
+                % check Jing's proof for the equivalence of AB sampling to
+                % Nested sampling with group size = 2
+                
+      
+                switch Formula
+                    case 1
+                        mean_Single = zeros(p,1);
+                        mean_Total = zeros(p,1);    
+                        for Group_index = 1:p
+                            mean_Single(Group_index) = mean(Current_Output_Single(Group_index,:)); % regular mean
+                            mean_Total(Group_index) = mean(Current_Output_Total(Group_index,:)); % regular mean
+                        end
+                        V1(Output_index) = var(mean_Single); % MATLAB var calculates the sample variance, normalized by 1/N-1
+                        Vt(Output_index) = total_Var(Output_index) - var(mean_Total);
+                    
+                    case 2
+                        var_Single = zeros(p,1);
+                        var_Total = zeros(p,1);    
+                        for Group_index = 1:p
+                            var_Single(Group_index) = var(Current_Output_Single(Group_index,:)); % regular variance
+                            var_Total(Group_index) = var(Current_Output_Total(Group_index,:)); % regular variance
+                        end
+                        V1(Output_index) = total_Var(Output_index)- mean(var_Single); 
+                        Vt(Output_index) = mean(var_Total);                
+                
                 end
-                V1(Output_index) = var(mean_Single);
-                Vt(Output_index) = total_Var(Output_index) - var(mean_Total);
+
  
-            case 1 % circular
+            case 1 % circular output quantity
                 vector_mean_Single = zeros(p,1);
                 vector_mean_Total = zeros(p,1);
                 switch Formula

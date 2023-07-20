@@ -1,6 +1,6 @@
-% Sobol_estimator.m
+% Saltelli_estimator.m
 
-function [S1,ST] = Noncirc_Sobol_estimator(modelfun,params,InputNumber,OutputNumber,Formula,SampleSize)
+function [S1,ST] = Saltelli_estimator(modelfun,params,InputNumber,OutputNumber,Formula,SampleSize)
 
 N = SampleSize;
 d = InputNumber;

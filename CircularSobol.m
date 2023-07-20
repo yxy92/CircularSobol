@@ -22,7 +22,7 @@ function [S1, ST] = CircularSobol(model, params, varargin)
      
      defaultPlot = 1;
      defaultProgress = 1;
-     defaultMethod = 'nonCircular';
+     defaultMethod = 'Saltelli'; % AB sampling method, check wikipedia page of global sensitivity analysis
      defaultFormula = 1;
      defaultSampleSize = 10^5;
      defaultGroupNumber = 10^2;
@@ -79,10 +79,10 @@ function [S1, ST] = CircularSobol(model, params, varargin)
     
  % calulate Sobol indices 
      switch Method
-        case 'nonCircular'
-            [S1,ST] = Noncirc_Sobol_estimator(modelfun,params,InputNumber,OutputNumber,Formula,SampleSize);
-        case 'Circular'
-            [S1,ST] = Circular_Sobol_estimator(modelfun,params,InputNumber,OutputNumber,OutputType,Formula,SampleSize,...
+        case 'Saltelli'
+            [S1,ST] = Saltelli_estimator(modelfun,params,InputNumber,OutputNumber,Formula,SampleSize);
+        case 'Nested'
+            [S1,ST] = Nested_estimator(modelfun,params,InputNumber,OutputNumber,OutputType,Formula,SampleSize,...
                 GroupNumber,GroupSize);
     end
 
