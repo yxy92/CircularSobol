@@ -6,7 +6,7 @@ S1_batch = zeros(batch_size,input_number);
 ST_batch = zeros(batch_size,input_number);
 
 for i=1:batch_size
-    [S1,ST] = Sobol_solver(@ToyModel_4,pd_list,10,1,1,'circular',2);
+    [S1,ST] = Sobol_solver(@ToyModel_4,pd_list,10,1,1,'Saltelli',2);
     S1_batch(i,:) = S1;
     ST_batch(i,:) = ST;
 end
