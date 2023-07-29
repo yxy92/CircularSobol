@@ -7,7 +7,7 @@ function Var_Parameter = generate_Var_Parameter(N,d,pd_list)
     for i=1:d
         pd = pd_list{i};
         if isa(pd,'double')
-            Var_Parameter(:,i) = datasample(pd,N);  
+            Var_Parameter(:,i) = datasample(pd,N);  % random sample with replacement
         else
             Var_Parameter(:,i) = icdf(pd,Var_Cube(:,i));
         end

@@ -34,8 +34,8 @@ for i=1:batch_size
     waitbar(i/batch_size, f, sprintf('Progress: %d %%', floor(i/batch_size*100)));
    
     
-    [S1, ST] = CircularSobol(Rhythmic_mRNA_model, params,'method','Nested','SampleSize',10^4,'formula',2,...
-                                                            'GroupNumber',100,'GroupSize',2,'plot',0,'progress',0);
+    [S1, ST] = CircularSobol(Rhythmic_mRNA_model, params,'method','Nested','SampleSize',10^2,'formula',2,...
+                                                            'GroupNumber',10,'GroupSize',2,'plot',0,'progress',0);
 
     S1_batch(i,:,:) = S1;
     ST_batch(i,:,:) = ST;

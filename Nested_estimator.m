@@ -71,7 +71,7 @@ for index = 1:d
                 
       
                 switch Formula
-                    case 1
+                    case 1 % V(E) for S1 and V - V(E) for ST
                         mean_Single = zeros(p,1);
                         mean_Total = zeros(p,1);    
                         for Group_index = 1:p
@@ -81,7 +81,7 @@ for index = 1:d
                         V1(Output_index) = var(mean_Single); % MATLAB var calculates the sample variance, normalized by 1/N-1
                         Vt(Output_index) = total_Var(Output_index) - var(mean_Total);
                     
-                    case 2
+                    case 2 % V - E(V) for S1 and E(V) for ST
                         var_Single = zeros(p,1);
                         var_Total = zeros(p,1);    
                         for Group_index = 1:p
