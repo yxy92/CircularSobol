@@ -20,8 +20,8 @@ function [S1, ST] = CircularSobol(model, params, varargin)
       
  % parse input arguments
      
-     defaultPlot = 1;
-     defaultProgress = 1;
+     defaultPlot = 0;
+     defaultProgress = 0;
      defaultMethod = 'Saltelli'; % AB sampling method, check wikipedia page of global sensitivity analysis
      defaultFormula = 1;
      defaultSampleSize = 10^5;

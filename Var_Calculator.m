@@ -13,19 +13,19 @@ function total_Var = Var_Calculator(modelfun,N,d,m,pd_list,OutputType,formula)
     Var_Output = zeros(N,m);
   
     % add parfor wait bar for running the Var sample
-    w = waitbar(0,'Start paralle running of the Var sample...');
-    D = parallel.pool.DataQueue;
-    afterEach(D, @parforWaitbar);
+%     w = waitbar(0,'Start paralle running of the Var sample...');
+%     D = parallel.pool.DataQueue;
+%     afterEach(D, @parforWaitbar);
 
-    iteration = N;
-    parforWaitbar(w,iteration);
+%     iteration = N;
+    %parforWaitbar(w,iteration);
     
     parfor j=1:N
         Var_Output(j,:) = modelfun(Var_Parameter(j,:));
-        send(D,[]);
+        %send(D,[]);
     end
     
-    close(w)
+%     close(w)
     %disp('Finished running the parameter sample for Variance calculation')
     
     % calculate variance 

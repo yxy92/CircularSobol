@@ -1,3 +1,4 @@
+% Jing's code example for optimization and batch job submission in MATLAB
 function j = optimize_submit2cluster_pool(c, new_or_continue, fname_bounds_cost, WorkDir, NumSets, max_num_jobs, NumSetsPerJob)
 
 if ~exist('max_num_jobs','var') || isempty(max_num_jobs) || max_num_jobs > 250
