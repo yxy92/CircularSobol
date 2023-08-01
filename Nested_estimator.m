@@ -21,12 +21,12 @@ total_Var = Var_Calculator(modelfun,N,d,m,params,OutputType,Formula);
 
 %% calculate Si and STi for individual parameters for each output
 
-f = waitbar(0,'Start Nested Sobol estimator...');
+%f = waitbar(0,'Start Nested Sobol estimator...');
 
 for index = 1:d
     
     % update waitbar
-    waitbar(index/d, f, sprintf('Progress: %d %%', floor(index/d*100)));
+    %waitbar(index/d, f, sprintf('Progress: %d %%', floor(index/d*100)));
     
     %% generate parameters
     [SinglePar,TotalPar] = generate_Nested_Parameter(params,p,q,d,index);
@@ -126,5 +126,5 @@ for index = 1:d
     
 
 end
-close(f); % close wait bar
+%close(f); % close wait bar
 end
