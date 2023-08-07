@@ -8,7 +8,7 @@ function [S1, ST] = SarahSobol_ARC(fname)
 Rhythmic_mRNA_model = bbModel(@Sarah_Rhythmic_mRNA,5,3,'OutputType',[0 0 0]);
 
 % create parameter distribution
-N = 10000;
+N = 10^4;
 
 amp_pd = makedist('Uniform','lower',0,'upper',1);
 phase_pd = makedist('Uniform','lower',0,'upper',24);
@@ -21,15 +21,17 @@ params = {amp_pd phase_pd Kd_pd amp_pd phase_pd};
 
 % call CircularSobol
 method = 'Nested';
-SampleSize = 10^3;
+SampleSize = 10^4;
 formula = 1;
-GroupNumber = 10^3;
+GroupNumber = 10^4;
 GroupSize = 2;
 
 [S1, ST] = CircularSobol(Rhythmic_mRNA_model, params,'method',method,'SampleSize',SampleSize,'formula',formula,...
                                                             'GroupNumber',GroupNumber,'GroupSize',GroupSize);
                                                         
 % write S1, ST to output
+fname = fname + "_" + method + "_GroupNumber_" +num2str(GroupNumber) +"_GroupSize_" ...
+                + "formula_" + num2str(formula)+ ".mat";
 save(fname);
 
 end

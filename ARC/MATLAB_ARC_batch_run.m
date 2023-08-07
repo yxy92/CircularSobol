@@ -15,7 +15,7 @@ c.AdditionalProperties.WallTime='48:00:00';
 currentFolder = pwd;
 
 % batch description
-num_job = 1;
+num_job = 10;
 
 
 % job description
@@ -27,7 +27,7 @@ fh = str2func(ModelName);
 % set up job submission
 for i=1:num_job
     % for unix environment
-    fname = currentFolder + "/" + ModelName + "_batch_" + num2str(i) + ".mat";
+    fname = currentFolder + "/" + ModelName + "_batch_" + num2str(i);
     j(i) = batch(c,fh,2,{fname},'Pool',20); 
 end
 
