@@ -22,7 +22,7 @@ Sobol's method or Sobol indices, is a global sensitivity analysis based on the d
 (orginal paper: I. M. Sobol′, 2001).
 </span>
 
-<img src="Sobolindices.png"  width="600" height="600">
+<img src="/Image/Sobolindices.png"  width="600" height="600">
 
 
 ## Circular Sobol indices for oscillation models
@@ -84,7 +84,7 @@ developed a simple mathematical model of rhythmic mRNA expression to show that r
 the observed discrepancy between rhythmic mRNAs and proteins. The model and analytic approximation of the peak
 phase of rhythmic mRNA $\phi_{x}$ are shown here.
 
-<img src="Sarah_Rhythmic_mRNA.png"  width="500" height="200">
+<img src="/Image/Sarah_Rhythmic_mRNA.png"  width="500" height="200">
 <pre><code>
 % Original paper: Sarah Luck et al. 2014 Cell Reports
 % check Rhythmic_mRNA_Model_Run.m for detail
@@ -96,7 +96,7 @@ mRNA stability and translation efficiency. It is interesting that hundreds of mR
 rhythmic poly(A) tail length (approximated by the ratio of long-tailed/short-tailed mRNA, i.e. L/S).
 We developed a simple model accounting for the 4 coupled rhythmic regulation processes of mRNA poly(A) tail, whose mathematical descirption are shown here.
 
-<img src="XY_Rhythmic_polyA_model.png"  width="500" height="300">
+<img src="/Image/XY_Rhythmic_polyA_model.png"  width="500" height="300">
 
 <pre><code>
 % Original paper: Xiangyu Yao et al. 2020 PLoS Comput Biol
